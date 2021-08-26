@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- https://www.runoob.com/w3cnote/html5-canvas-intro.html -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="tutorial" width="800" height="800"></canvas>
+    <!-- <script src="app.js"></script> -->
+    <script type="text/javascript">
+      var canvas = document.getElementById("tutorial");
+      var ctx = canvas.getContext("2d");
+
+      function draw() {
+        ctx.fillStyle = "rgb(200,0,0)";
+        //绘制矩形
+        ctx.fillRect(10, 10, 55, 50);
+
+        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+        ctx.fillRect(30, 30, 55, 50);
+
+        ctx.fillStyle = "rgba(0,0,0,0.5)";
+        ctx.fillRect(10, 90, 100, 50);
+
+        ctx.clearRect(15, 95, 80, 20);
+
+        ctx.strokeRect(10, 145, 80, 10);
+
+        ctx.strokeStyle = "rgba(240,0,0,0.5)";
+        ctx.beginPath();
+        ctx.moveTo(10, 160);
+        ctx.lineTo(200, 175);
+        ctx.lineTo(100, 200);
+        ctx.closePath();
+        ctx.stroke();
+
+        var colorBlockCount = 20;
+        var speraColor = 255.0 / colorBlockCount;
+        var colorBlockLen = 30;
+        for (var i = 0; i < colorBlockCount; i++) {
+          for (var j = 0; j < colorBlockCount; j++) {
+            ctx.fillStyle =
+              "rgb(" +
+              Math.floor(255 - speraColor * i) +
+              "," +
+              Math.floor(255 - speraColor * j) +
+              ",0)";
+
+            ctx.fillRect(
+              10 + j * colorBlockLen,
+              220 + i * colorBlockLen,
+              colorBlockLen,
+              colorBlockLen
+            );
+          }
+        }
+      }
+
+      draw();
+    </script>
+  </body>
+</html>
